@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Lenyy, With Love</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            color: #e74c3c;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        p {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+        
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .heart {
+            font-size: 100px;
+            color: #e74c3c;
+            animation: heartbeat 1.5s infinite;
+            margin: 20px 0;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .signature {
+            font-style: italic;
+            margin-top: 40px;
+            font-size: 1.2em;
+        }
+        
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: rgba(231, 76, 60, 0.6);
+            font-size: 20px;
+            animation: float 6s linear infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 1; }
+            100% { transform: translateY(-10vh) translateX(20px); opacity: 0; }
+        }
+        
+        .btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <h1>Dear Lenyy</h1>
+        
+        <div class="heart">❤️</div>
+        
+        <p>From the moment you entered my life, everything changed. The world became brighter, more colorful, and filled with possibilities I never imagined before.</p>
+        
+        <p>I've been trying to find the perfect words to express how I feel about you, but words seem inadequate to capture the depth of my emotions. So let me simply say this:</p>
+        
+        <p><span class="highlight">I love you, Lenyy.</span></p>
+        
+        <p>I love your smile that lights up my darkest days. I love your laughter that sounds like the sweetest melody. I love your kindness, your strength, and even your quirks that make you uniquely you.</p>
+        
+        <p>Every moment with you feels like a gift, and I cherish each one. You've become my best friend, my confidant, and the person I want to share all of life's adventures with.</p>
+        
+        <p>This is me, opening my heart to you, hoping that you might feel the same way.</p>
+        
+        <button class="btn" id="moreHeartsBtn">Send More Love</button>
+        
+        <div class="signature">With all my heart,<br>Your Secret Admirer</div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHearts(count) {
+            const heartsContainer = document.getElementById('hearts');
+            
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 6 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 30 + 10) + 'px';
+                heartsContainer.appendChild(heart);
+                
+                // Remove hearts after animation completes
+                setTimeout(() => {
+                    heart.remove();
+                }, 9000);
+            }
+        }
+        
+        // Initial hearts
+        createHearts(15);
+        
+        // Add more hearts when button is clicked
+        document.getElementById('moreHeartsBtn').addEventListener('click', function() {
+            createHearts(30);
+            
+            // Change button text temporarily
+            const btn = this;
+            const originalText = btn.textContent;
+            btn.textContent = "Sending Love! ❤️";
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
